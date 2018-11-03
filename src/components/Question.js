@@ -1,4 +1,5 @@
 import React from 'react'
+import { decode } from 'he'
 
 
 class Question extends React.Component{
@@ -29,16 +30,18 @@ class Question extends React.Component{
 
 
   render(){
-    console.log(this.props.question)
+    const {question, score} = this.props
 
     return(
       <React.Fragment >
-      <h3>{this.props.question.question}</h3>
-        {this.props.question.hasOwnProperty('answers')
-          ? this.props.question.answers.map(answer => <button onClick={this.handleClick} key={answer}>{answer}</button>)
+      {question.hasOwnProperty('question')
+        ? <h3>{decode(question.question)}</h3>
+        : null}
+        {question.hasOwnProperty('answers')
+          ? question.answers.map(answer => <button onClick={this.handleClick} key={answer}>{answer}</button>)
           : null}
 
-      <h3>Your score is {this.props.score}</h3>
+      <h3>Your score is {score}</h3>
 
 
       </React.Fragment>

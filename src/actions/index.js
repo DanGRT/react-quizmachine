@@ -1,3 +1,5 @@
+//question
+
 export function receiveQuestion(question){
   return {
     type: 'RECEIVE_QUESTION',
@@ -16,6 +18,8 @@ export function fetchQuestionFromAPI(){
 }
 
 
+//score
+
 export function incrementScore(){
   return {
     type: 'INCREMENT_SCORE'
@@ -24,5 +28,29 @@ export function incrementScore(){
 export function resetScore(){
   return {
     type: 'RESET_SCORE'
+  }
+}
+
+//User
+
+export function logIn(){
+  return {
+    type: 'USER_LOGGED_IN',
+    loggedIn: true
+  }
+}
+
+export function logOut(){
+  return {
+    type: 'USER_LOGGED_OUT',
+    loggedIn: false
+  }
+}
+
+export function updateUsername(username){
+  console.log(username)
+  return {
+    type: 'UPDATE_USERNAME',
+    username
   }
 }
