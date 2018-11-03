@@ -1,3 +1,5 @@
+import {loadState} from '../localStorage.js'
+
 //question
 
 export function receiveQuestion(question){

@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 class Login extends React.Component{
   constructor(props){
     super(props)
@@ -19,7 +20,7 @@ class Login extends React.Component{
   handleRegister(event){
     event.preventDefault()
     this.props.logIn()
-    localStorage.setItem('user', JSON.stringify(this.props.user))
+
 
 
   }

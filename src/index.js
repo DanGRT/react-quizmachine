@@ -10,15 +10,16 @@ import {loadState, saveState} from './localStorage.js'
 
 //probably a messy way of doing this
 const persistedState = {user: loadState()}
-console.log(persistedState)
+// console.log(persistedState)
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, persistedState, /* preloadedState, */ composeEnhancers(applyMiddleware(
+const store = createStore(rootReducer, persistedState,/* preloadedState, */ composeEnhancers(applyMiddleware(
   thunkMiddleware
 )));
 
 
 //pretty sure this is going to save user state continually, regardless of what changes to store are made (no idea how to get around this)
+//trying to use the saveState function after logIn dispatch saved 'loggedIn: false' as props are not updated in time
 store.subscribe(() => {
   saveState(store.getState().user)
 })
