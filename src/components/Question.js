@@ -16,12 +16,24 @@ class Question extends React.Component{
 
   }
 
+
+  componentWillReceiveProps(nextProps){
+    if (nextProps.score > this.props.user.highScore){
+      console.log('highscore')
+      this.props.newPersonalBest(nextProps.score)
+      this.props.showHighScoreBanner()
+
+  }
+}
+
   handleClick(event){
-    if (event.target.textContent === this.props.question.correct_answer){
+    if (event.target.value === this.props.question.correct_answer){
       this.props.incrementScore()
       this.props.fetchQuestion()
+
     }else{
       this.props.resetScore()
+      this.props.hideHighScoreBanner()
       this.props.fetchQuestion()
     }
 
@@ -29,8 +41,10 @@ class Question extends React.Component{
 
 
 
+
+
   render(){
-    const {question, score} = this.props
+    const {question, score, display} = this.props
 
     return(
       <React.Fragment >
@@ -38,10 +52,13 @@ class Question extends React.Component{
         ? <h3>{decode(question.question)}</h3>
         : null}
         {question.hasOwnProperty('answers')
-          ? question.answers.map(answer => <button onClick={this.handleClick} key={answer}>{answer}</button>)
+          ? question.answers.map(answer => <button onClick={this.handleClick} value={answer} key={answer}>{decode(answer)}</button>)
           : null}
 
       <h3>Your score is {score}</h3>
+      {display.showHiScoreBanner
+        ? <h3>NEW PERSONAL BEST</h3>
+        : null}
 
 
       </React.Fragment>

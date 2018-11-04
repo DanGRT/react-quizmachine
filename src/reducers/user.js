@@ -1,7 +1,8 @@
-// import {loadState} from '../localStorage.js'
+
 
 let initialState = {loggedIn: false,
-                    userName: 'guest'}
+                    userName: 'guest',
+                    highScore: 0}
 
 
 function user(state = initialState, action){
@@ -12,6 +13,8 @@ function user(state = initialState, action){
       return Object.assign({}, state, {loggedIn: false})
     case 'UPDATE_USERNAME':
       return Object.assign({}, state, {userName: action.username})
+    case 'NEW_PERSONAL_BEST':
+      return Object.assign({}, state, {highScore: action.highscore})
     default:
       return state
   }

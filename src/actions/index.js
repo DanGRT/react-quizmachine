@@ -33,6 +33,22 @@ export function resetScore(){
   }
 }
 
+
+//display
+export function showHighScoreBanner(){
+  return {
+    type: 'SHOW_HIGH_SCORE_BANNER',
+    showHiScoreBanner: true
+  }
+}
+
+export function hideHighScoreBanner(){
+  return {
+    type: 'HIDE_HIGH_SCORE_BANNER',
+    showHiScoreBanner: false
+  }
+}
+
 //User
 
 export function logIn(){
@@ -54,5 +70,12 @@ export function updateUsername(username){
   return {
     type: 'UPDATE_USERNAME',
     username
+  }
+}
+
+export function newPersonalBest(highscore){
+  return {
+    type: 'NEW_PERSONAL_BEST',
+    highscore
   }
 }

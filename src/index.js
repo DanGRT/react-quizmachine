@@ -8,9 +8,8 @@ import { Provider } from 'react-redux';
 import rootReducer from './reducers';
 import {loadState, saveState} from './localStorage.js'
 
-//probably a messy way of doing this
 const persistedState = {user: loadState()}
-// console.log(persistedState)
+
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, persistedState,/* preloadedState, */ composeEnhancers(applyMiddleware(
